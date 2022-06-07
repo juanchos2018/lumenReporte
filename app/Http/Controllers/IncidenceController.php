@@ -17,7 +17,7 @@ class IncidenceController extends Controller
         try
         {  
             $obj = new Incidence();
-            $obj->descrition=$request->descrition;   
+            $obj->description=$request->description;   
             $obj->location=$request->location; 
             $obj->lat=$request->lat; 
             $obj->lon=$request->lon; 
@@ -42,7 +42,7 @@ class IncidenceController extends Controller
 
     public function get($usuario_id)
     {       
-        $obj = Incidence::where("user_id",$usuario_id)->get();
+        $obj = Incidence::getMyIncidences($usuario_id);
         $array=array();
         if($obj != null){
             return response()->json(['status' => 200,'result' => $obj]);
@@ -53,7 +53,7 @@ class IncidenceController extends Controller
 
     public function getAll()
     {       
-        $obj = Incidence::get();
+        $obj = Incidence::getAllIncidences();
         $array=array();
         if($obj != null){
             return response()->json(['status' => 200,'result' => $obj]);

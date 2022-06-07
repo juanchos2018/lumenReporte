@@ -17,7 +17,14 @@ $router->post('/incidence', 'IncidenceController@store');
 $router->get('/incidence/{usuario_id}', 'IncidenceController@get');
 $router->get('/incidence', 'IncidenceController@getAll');
 
-//$router->post('/incidence', 'IncidenceController@store');
+
+$router->get('/departaments', 'DepartamentController@getdepartament');
+$router->get('/provinces/{department_id}', 'DepartamentController@provinces');
+$router->get('/distrites/{province_id}', 'DepartamentController@distrites');
+
+
+$router->post('/notice', 'NoticeController@store');
+
 $router->get('/fire', function(){
     event(new MessageEvent);
   //  return 'Fire';

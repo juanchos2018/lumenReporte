@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateIncidencesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         Schema::create('incidences', function (Blueprint $table) {
@@ -23,7 +19,7 @@ class CreateIncidencesTable extends Migration
             $table->string('location', 100)->nullable();
             $table->string('lat', 100)->nullable();
             $table->string('lon', 100)->nullable();
-            $table->string('photo', 100)->nullable();
+            $table->string('photo', 300)->nullable();
             $table->date('date');
             $table->string('hour', 100)->nullable();
             $table->integer('state');
