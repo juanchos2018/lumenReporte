@@ -25,6 +25,13 @@ $router->get('/distrites/{province_id}', 'DepartamentController@distrites');
 
 $router->post('/notice', 'NoticeController@store');
 
+
+$router->post('/photo', function(){
+
+  $obj=array();
+  return response()->json(['status' => 200, 'result' => ['user' => $obj]]);
+});
+
 $router->get('/fire', function(){
     event(new MessageEvent);
   //  return 'Fire';
