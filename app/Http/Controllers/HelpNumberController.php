@@ -4,28 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Notices;
+use App\Models\HelpNumber;
 
-class NoticeController extends Controller
-{    
+class HelpNumberController extends Controller
+{
+    //
+
 
     public function store(Request $request)
     {
         $name_file = "uploads/default.png";   
-        $name="notica";
+        $name="number";
         if ($request->hasFile('photo')){
             $name_file = $this->Upload($request->file('photo'),$name."-".time(),'uploads/');
         }
-        $obj = new Notices();
-        $obj->title = $request->title;
-        $obj->description = $request->description;
-        $obj->location = $request->location;
-        $obj->date = $request->date;
-        $obj->photo = $name_file;
-        // $obj->department_id = $request->department_id;
-        // $obj->province_id = $request->province_id;
-        // $obj->district_id = $request->district_id;
-     
+        $obj = new HelpNumber();
+        $obj->grupo = $request->grupo;
+        $obj->unid = $request->unid;
+        $obj->phone = $request->phone;
+        $obj->photo = $name_file;     
         $obj->save();             
 
         return response()->json(['status' => 200,'result' => $obj]);
@@ -33,7 +30,7 @@ class NoticeController extends Controller
 
     public function get()
     {       
-        $obj = Notices::get();
+        $obj = HelpNumber::get();
         $array=array();
         if($obj != null){
             return response()->json(['status' => 200,'result' => $obj]);
@@ -49,5 +46,4 @@ class NoticeController extends Controller
         $file->move($path, $filenamestore);
         return $path.$filenamestore;
     }
-
 }

@@ -40,12 +40,10 @@ class UserController extends Controller
             $obj->api_token =Str::random(60);
             $obj->state =1;
             $obj->save();
-            return response()->json(['status' => 200, 'result' => ['user' => $obj]]);
-           // return response()->json(['status' => 200, 'result' => ['user' => $obj]]);
-           // return response()->json(['status' => 200,'result' => $obj,'message' => "Registrado"]);                      
+            return response()->json(['status' => 200, 'result' => ['user' => $obj]]);                             
           
         } catch (\Exception $e){   
-           // return response()->json(['status' => 404,'message'=>$e->getMessage()]);
+       
             return response()->json(['status' => 404, 'result' => 'error'.$e]);
         } 
     }
@@ -55,15 +53,30 @@ class UserController extends Controller
         { 
             $obj = User::find($usuario_id);
             if($obj){
-            // return response()->json(['status' => 200,'result' => $obj]);
+        
                 return response()->json(['status' => 200, 'result' => ['user' => $obj]]);
             }else{
-            //  return response()->json(['status' => 404]);
+           
                 return response()->json(['status' => 404,'result'=>null]);
             }
         } catch (\Exception $e){   
             return response()->json(['status' => 404,'result'=>$e->getMessage()]);
-            // return response()->json(['status' => 404, 'result' => 'error'.$e]);
+            
+        } 
+    }
+    public function get()
+    {
+        try
+        { 
+            $obj = User::get();
+            if($obj){           
+                return response()->json(['status' => 200, 'result' =>  $obj]);
+            }else{           
+                return response()->json(['status' => 404,'result'=>null]);
+            }
+        } catch (\Exception $e){   
+            return response()->json(['status' => 404,'result'=>$e->getMessage()]);
+           
         } 
     }
 }

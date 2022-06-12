@@ -10,21 +10,24 @@ $router->get('/', function () use ($router) {
 
 
 $router->post('/user', 'UserController@store');
+$router->get('/user', 'UserController@get');
 $router->get('/user-view/{usuario_id}', 'UserController@View');
 $router->post('/login', 'AuthenticateController@Login');
 $router->post('/incidence', 'IncidenceController@store');
 
 $router->get('/incidence/{usuario_id}', 'IncidenceController@get');
 $router->get('/incidence', 'IncidenceController@getAll');
-
+$router->get('/incidencethow', 'IncidenceController@getAllThow');
 
 $router->get('/departaments', 'DepartamentController@getdepartament');
 $router->get('/provinces/{department_id}', 'DepartamentController@provinces');
 $router->get('/distrites/{province_id}', 'DepartamentController@distrites');
 
-
 $router->post('/notice', 'NoticeController@store');
+$router->get('/notice', 'NoticeController@get');
 
+$router->post('/helpnumber', 'HelpNumberController@store');
+$router->get('/helpnumber', 'HelpNumberController@get');
 
 $router->post('/photo', function(){
 

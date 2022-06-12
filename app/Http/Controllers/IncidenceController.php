@@ -62,5 +62,16 @@ class IncidenceController extends Controller
         }
     }
 
+    public function getAllThow()
+    {       
+        $obj = Incidence::getAllIncidencesthow();
+        $array=array();
+        if($obj != null){
+            return response()->json(['status' => 200,'result' => $obj]);
+        }else{
+            return response()->json(['status' => 404,'result' => $array]);
+        }
+    }
+
 
 }

@@ -17,9 +17,9 @@ class CreateNoticesTable extends Migration
             $table->string('location', 100)->nullable();  
             $table->string('date', 100)->nullable();     
             
-            $table->char('department_id', 2);
-            $table->char('province_id', 4);
-            $table->char('district_id', 6);
+            $table->char('department_id', 2)->nullable();
+            $table->char('province_id', 4)->nullable();
+            $table->char('district_id', 6)->nullable();
             
             $table->foreign('department_id')->references('id')->on('departments');
             $table->foreign('province_id')->references('id')->on('provinces');
